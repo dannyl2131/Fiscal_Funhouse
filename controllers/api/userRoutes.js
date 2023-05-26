@@ -33,6 +33,28 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Create new user -Eric
+router.post('/user', async (req, res) => {
+  try {
+    const dbUserData = await User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+      income: req.body.income,
+
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
