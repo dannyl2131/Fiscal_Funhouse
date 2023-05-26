@@ -39,10 +39,6 @@ User.init(
     income: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    expenses: {
-      type: DataTypes.INTEGER,
-      allowNull: false
     }
   },
   {
