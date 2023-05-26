@@ -6,6 +6,7 @@ router.post('/expense', async (req, res) => {
     const newExpense = await Expense.create({
       name: req.body.name,
       cost: req.body.cost,
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(newExpense);
