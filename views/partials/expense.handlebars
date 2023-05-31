@@ -1,0 +1,8 @@
+<section class="container">
+    <h3 class="expense-title">{{}}</h3>
+    <h4>Expense Amount: {{}}</h4>
+    <!--If user is logged in, render to expense content-->
+    {{#if loggedIn}}
+    <section class="flex-row justify-space-between">
+        {{#each expense as |expense|}}
+
