@@ -1,10 +1,23 @@
 <!--If user is logged in, render to expense content-->
 {{#if loggedIn}}
-<section class="expenses">
-    <div class="expense-details">
-        <h3>{{expense.title}}</h3>
-        <p>{{expense.amount}}</p>
-    </div>
+<table>
+        <header>
+            <tr>
+                {{#each headers}}
+                <h3>{{expense}}</h3>
+                {{/each}}
+            </tr>
+        </header>
+        <body>
+            {{#each rows}}
+            <tr>
+                {{#each amount}}
+                <h4>{{amount}}</h4>
+                {{/each}}
+            </tr>
+            {{/each}}
+        </body>
+    </table>
 </section>
 <!--Otherwise, provide a link to login -->
 {{else}}
