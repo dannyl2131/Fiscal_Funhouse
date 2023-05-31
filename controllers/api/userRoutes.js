@@ -33,7 +33,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
+=======
 // Create new user -Eric
+
 router.post('/user', async (req, res) => {
   try {
     const dbUserData = await User.create({
@@ -41,6 +44,10 @@ router.post('/user', async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       income: req.body.income,
+    });
+    req.session.save(() => {
+      req.session.loggedIn = true;
+=======
 
     });
 
