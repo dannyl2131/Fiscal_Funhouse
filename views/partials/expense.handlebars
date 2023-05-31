@@ -1,8 +1,14 @@
-<section class="container">
-    <h3 class="expense-title">{{}}</h3>
-    <h4>Expense Amount: {{}}</h4>
-    <!--If user is logged in, render to expense content-->
-    {{#if loggedIn}}
-    <section class="flex-row justify-space-between">
-        {{#each expense as |expense|}}
+<!--If user is logged in, render to expense content-->
+{{#if loggedIn}}
+<section class="expenses">
+    <div class="expense-details">
+        <h3>{{expense.title}}</h3>
+        <p>{{expense.amount}}</p>
+    </div>
+</section>
+<!--Otherwise, provide a link to login -->
+{{else}}
+<h3>Please <a href="/login">login</a> to view this content</h3>
+{{/if}}
+
 
