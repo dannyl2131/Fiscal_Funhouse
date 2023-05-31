@@ -33,6 +33,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
+=======
+// Create new user -Eric
+
 router.post('/user', async (req, res) => {
   try {
     const dbUserData = await User.create({
@@ -43,6 +47,13 @@ router.post('/user', async (req, res) => {
     });
     req.session.save(() => {
       req.session.loggedIn = true;
+=======
+
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
       res.status(200).json(dbUserData);
     });
   } catch (err) {

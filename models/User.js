@@ -16,9 +16,10 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
     email: {
       type: DataTypes.STRING,
@@ -35,6 +36,10 @@ User.init(
         len: [8],
       },
     },
+    income: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
   },
   {
     hooks: {
