@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
 
 // Create new user -Eric
 
-router.post('/user', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const dbUserData = await User.create({
       username: req.body.username,
@@ -44,6 +44,7 @@ router.post('/user', async (req, res) => {
       password: req.body.password,
       income: req.body.income,
     });
+    console.log(`user created ${dbUserData}`)
     req.session.save(() => {
       req.session.loggedIn = true;
 
