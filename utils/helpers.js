@@ -15,7 +15,7 @@ module.exports = {
 
 //Grab numbers from Table
 
-const mysql = require ('mysql');
+const mysql = require ('mysql2');
 
 function combineNumbersFromTable(config, tableName, ColumnName){
   return new Promise((resolve, reject) => {
