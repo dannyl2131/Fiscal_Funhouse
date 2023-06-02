@@ -15,38 +15,38 @@ module.exports = {
 
 //Grab numbers from Table
 
-const mysql = require ('mysql2');
-require('dotenv').config();
+// const mysql = require ('mysql2');
+// require('dotenv').config();
 
-function combineNumbersFromTable(config, tableName, ColumnName){
-  return new Promise((resolve, reject) => {
-    const connection =mysql.createConnection(config);
-    connection.connect((err) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      const numbers=results.map((row) => row[columnName]);
-      const combinedNumber = numbers.reduce((accumulator, currentNumber) => accumulator + currentNumber, 0);
-      resolve(combinedNumber);
-    });
-    connection.end();
-  })
-}
+// function combineNumbersFromTable(config, tableName, ColumnName){
+//   return new Promise((resolve, reject) => {
+//     const connection =mysql.createConnection(config);
+//     connection.connect((err) => {
+//       if (err) {
+//         reject(err);
+//         return;
+//       }
+//       const numbers=results.map((row) => row[columnName]);
+//       const combinedNumber = numbers.reduce((accumulator, currentNumber) => accumulator + currentNumber, 0);
+//       resolve(combinedNumber);
+//     });
+//     connection.end();
+//   })
+// }
 
-const config = {
-  user: DB_USER,
-  password: DB_PASSWORD,
-  database: DB_NAME,
-};
+// const config = {
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME,
+// };
 
-const tableName = 'expense';
-const columnName = 'number_column';
+// const tableName = 'expense';
+// const columnName = 'number_column';
 
-combineNumbersFromTable(config, tableName, columnName)
-  .then((combinedNumber) => {
-    console.log('Combined number:', combinedNumber);
-  });
+// combineNumbersFromTable(config, tableName, columnName)
+//   .then((combinedNumber) => {
+//     console.log('Combined number:', combinedNumber);
+//   });
 
 // Formatting currency.
 function formatCurrency(amount) {
