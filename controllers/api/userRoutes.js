@@ -34,7 +34,6 @@ router.post('/login', async (req, res) => {
 });
 
 
-=======
 // Create new user -Eric
 
 router.post('/user', async (req, res) => {
@@ -47,7 +46,7 @@ router.post('/user', async (req, res) => {
     });
     req.session.save(() => {
       req.session.loggedIn = true;
-=======
+
 
     });
 
