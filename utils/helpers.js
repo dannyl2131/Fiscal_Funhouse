@@ -16,6 +16,7 @@ module.exports = {
 //Grab numbers from Table
 
 const mysql = require ('mysql2');
+require('dotenv').config();
 
 function combineNumbersFromTable(config, tableName, ColumnName){
   return new Promise((resolve, reject) => {
@@ -34,9 +35,9 @@ function combineNumbersFromTable(config, tableName, ColumnName){
 }
 
 const config = {
-  user: 'root',
-  password: '',
-  database: 'pennywise_db',
+  user: DB_USER,
+  password: DB_PASSWORD,
+  database: DB_NAME,
 };
 
 const tableName = 'expense';
