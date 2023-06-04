@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Expense } = require('../../models');
 
-router.post('/expense', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newExpense = await Expense.create({
       name: req.body.name,
