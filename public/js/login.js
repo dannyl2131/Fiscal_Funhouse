@@ -26,6 +26,7 @@ const signupFormHandler = async (event) => {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
   const income = parseInt(document.querySelector('#user-income').value.trim());
+  const userArray = [username, income];
   
   if (username && email && password && income) {
     const response = await fetch('/api/users/', {
@@ -36,11 +37,20 @@ const signupFormHandler = async (event) => {
     
     if (response.ok) {
       document.location.replace('/');
+      localStorage.setItem('userInfo', JSON.stringify(userArray));
     } else {
       alert('Failed to sign up.');
     }
   }
 };
+
+const bandaidFix = async (event) => {
+  event.preventDefault();
+  const username = document.querySelector('#username-signup').value.trim();
+  const income = parseInt(document.querySelector('#user-income').value.trim());
+
+
+}
 
 document
   .querySelector('.login-form')
