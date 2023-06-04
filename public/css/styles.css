@@ -31,8 +31,10 @@ flex-grow: 1;
 }
 
 budget{
-
-
+display: flex;
+padding: 50px;
+justify-content: center;
+align-items: center;
 }
 
 .container {
