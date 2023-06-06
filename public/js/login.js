@@ -36,7 +36,7 @@ const signupFormHandler = async (event) => {
     });
     
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/new');
       localStorage.setItem('userInfo', JSON.stringify(userArray));
     } else {
       alert('Failed to sign up.');

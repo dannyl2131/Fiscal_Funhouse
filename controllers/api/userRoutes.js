@@ -50,7 +50,9 @@ router.post('/', async (req, res) => {
     console.log(`user created ${dbUserData}`)
     req.session.save(() => {
       req.session.loggedIn = true;
-
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.income = dbUserData.income;
 
     });
 

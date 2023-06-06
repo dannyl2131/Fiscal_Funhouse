@@ -28,10 +28,15 @@ router.get('/', async (req, res) => {
           },
         ],
       });
-  
+      
+      if(expenseData) {
       const expenses = expenseData.get({ plain: true });
       console.log(expenses.expenses[0].name);
       res.render('homepage', { expenses, loggedIn: req.session.loggedIn });
+      } else {
+        res.render('homepage', { loggedIn: req.session.loggedIn });
+      }
+
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -98,7 +103,7 @@ router.get('/new', (req, res) => {
     return;
   }
 
-  res.render('expense');
+  res.render('expense', { loggedIn: req.session.loggedIn });
 });
 
 module.exports = router;
