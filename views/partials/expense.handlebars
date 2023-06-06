@@ -1,26 +1,18 @@
-<!--If user is logged in, render to expense content-->
-{{#if loggedIn}}
-<table>
-        <thead>
-            <tr>
-                {{#each headers}}
-                <th>{{expense}}</th>
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-            {{#each rows}}
-            <tr>
-                {{#each amount}}
-                <td>{{amount}}</td>
-                {{/each}}
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-<!--Otherwise, provide a link to login -->
-{{else}}
-<h3>Please <a href="/login">login</a> to view this content</h3>
-{{/if}}
+<h2 class="page-title">Add Expense</h2>
+<form class="form expense-form">
+  <div class="form-group">
+    <label for="expense-name">Expense Name:</label>
+    <input class="form-input" type="text" id="expense-name" />
+  </div>
+  <div class="form-group">
+    <label for="expense-amount">Expense Amount:</label>
+    <input class="form-input" type="text" id="expense-amount" />
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Add Expense</button>
+  </div>
+</form>
+
+
 
 
