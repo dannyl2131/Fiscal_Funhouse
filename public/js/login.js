@@ -44,14 +44,6 @@ const signupFormHandler = async (event) => {
   }
 };
 
-const bandaidFix = async (event) => {
-  event.preventDefault();
-  const username = document.querySelector('#username-signup').value.trim();
-  const income = parseInt(document.querySelector('#user-income').value.trim());
-
-
-}
-
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
