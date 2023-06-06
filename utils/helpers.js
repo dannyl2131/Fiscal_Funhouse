@@ -29,3 +29,8 @@ function formatNumber(number) {
 function calculateMonthlySavings(income, expenses) {
   return income - expenses;
 }
+
+function getUserInfo() {
+  const storedUser = JSON.parse(localStorage.getItem('userInfo'));
+  return storedUser;
+}
