@@ -1,26 +1,5 @@
 <!--If user is logged in, render to expense content-->
-{{#if loggedIn}}
-<table>
-        <thead>
-            <tr>
-                {{#each headers}}
-                <th>{{expense}}</th>
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-            {{#each rows}}
-            <tr>
-                {{#each amount}}
-                <td>{{amount}}</td>
-                {{/each}}
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-<!--Otherwise, provide a link to login -->
-{{else}}
-<h3>Please <a href="/login">login</a> to view this content</h3>
-{{/if}}
+
+
 
 
