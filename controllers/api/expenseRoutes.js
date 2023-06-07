@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Expense } = require('../../models');
 
+// Create new expense
 router.post('/', async (req, res) => {
   try {
       const newExpense = await Expense.create({
@@ -8,10 +9,6 @@ router.post('/', async (req, res) => {
       cost: req.body.cost,
       user_id: req.session.user_id,
     });
-
-    
-
-    // console.log(newExpense);
 
     res.status(200).json(newExpense);
 
