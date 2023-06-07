@@ -10,7 +10,6 @@
 <button id="logout" class="btn-no-style">Logout</button>
 {{/each}}
 {{#each expenses.expenses as |expense| }}
-<h1>{{expense.name}}</h1>
-<h1>{{expense.cost}}</h1>
+<h4>{{expense.name}}: ${{expense.cost}}</h4>
 {{/each}}
 
