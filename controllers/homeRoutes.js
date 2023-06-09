@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Expense } = require('../models');
 const withAuth = require('../utils/auth');
 
+// Login page route
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -12,6 +13,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Homepage route
 router.get('/', async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
@@ -43,6 +45,7 @@ router.get('/', async (req, res) => {
     }
   }
 });
+
 
 // const chart = require('chart')
 // const sequelize = require('../../config/connection');
@@ -99,6 +102,7 @@ router.get('/', async (req, res) => {
 //   return findIncome() - findExpenses()
 // }
 
+// New expense page route
 router.get('/new', (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/');
