@@ -1,54 +1,24 @@
-const chart = require('chart')
-const sequelize = require('../../config/connection');
-const {User, Expense} = require('../../models/')
-const config = {
-  type: 'pie',
-  data: data,
-};
+// const ctx = document.getElementById('chart');
 
-const data = {
-  labels: [
-    'Income',
-    'Expenses',
-    'Remaining'
-  ],
-  datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
-    ],
-    hoverOffset: 4
-  }]
-};
+// handlebars.registerHelper('expenseTotal', function(expenses){
+//   let total = 0
+//     for(let i=0; i < expenses.length; i++){
+//         total += expenses[i]
+//     }
+//     return total;
+// })
 
-const findIncome = async function(){
-  let income = await User.findOne({
-    where: {
-      id: req.session.user_id
-    },
-    attributes: [
-      'income'
-    ],
-    raw: true
-  })
-  return income
-}
+// handlebars.registerHelper('remaining', function(income){
+//   return income - expenseTotal()
+// })
 
-const findExpenses = async function(){
-  let expense = await Expense.findAll({
-    where: {
-      user_id: req.session.user_id
-    },
-    attributes: [
-      'cost'
-    ],
-    raw: true
-  })
-  return expense
-}
-const findRemaining = async function(){
-  return findIncome() - findExpenses()
-}
+// const handlebars = require('handlebars');
+// const fs = require('fs');
+// const Chart = require('chart.js');
+
+// Register the helper function
+
+
+
+
+module.exports = {expenseTotal, remaining}

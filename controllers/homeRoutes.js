@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { User, Expense } = require('../models');
 const withAuth = require('../utils/auth');
+const {expenseTotal, remaining} = require('chart.js')
+const fs = require('fs')
+const handlebars = require('handlebars')
 
 // Login page route
 router.get('/login', (req, res) => {
@@ -30,11 +33,36 @@ router.get('/', async (req, res) => {
           },
         ],
       });
-      
+      const incomeData = await User.findByPk(req.session.user_id, {
+        attributes: ['income']
+      })
+      const income = incomeData.get({plain: true})
       if(expenseData) {
       const expenses = expenseData.get({ plain: true });
-      console.log(expenses.expenses[0].name);
-      res.render('homepage', { expenses, loggedIn: req.session.loggedIn });
+      const expenseTotal = function(expenses){
+        let total = 0
+        let arr = []
+        for(let i=0; i < expenses.length; i++){
+        total += expenses[i].cost
+        }
+        return total;
+      }
+      const remaining = function(income){
+        return income - expenseTotal(expenses.expenses)
+      }
+      const chartData = {
+        labels: ['Income', 'Expenses', 'Remaining'],
+        datasets: [{
+          data: [income.income, expenseTotal(expenses.expenses), remaining(income.income)],
+          color: '#fff'
+        }]
+      };
+      const template = fs.readFileSync('./views/partials/chart.handlebars', 'utf8');
+      const compiledTemplate = handlebars.compile(template);
+      const renderedTemplate = compiledTemplate({ chartData });
+
+      // res.send(renderedTemplate);
+      res.render('homepage', { expenses, income, renderedTemplate, chartData, loggedIn: req.session.loggedIn });
       } else {
         res.render('homepage', { loggedIn: req.session.loggedIn });
       }
@@ -46,61 +74,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-
-// const chart = require('chart')
-// const sequelize = require('../../config/connection');
-// const {User, Expense} = require('../../models/')
-// const config = {
-//   type: 'pie',
-//   data: data,
-// };
-
-// const data = {
-//   labels: [
-//     'Income',
-//     'Expenses',
-//     'Remaining'
-//   ],
-//   datasets: [{
-//     label: 'My First Dataset',
-//     data: [300, 50, 100],
-//     backgroundColor: [
-//       'rgb(255, 99, 132)',
-//       'rgb(54, 162, 235)',
-//       'rgb(255, 205, 86)'
-//     ],
-//     hoverOffset: 4
-//   }]
-// };
-
-// const findIncome = async function(){
-//   let income = await User.findOne({
-//     where: {
-//       id: req.session.user_id
-//     },
-//     attributes: [
-//       'income'
-//     ],
-//     raw: true
-//   })
-//   return income
-// }
-
-// const findExpenses = async function(){
-//   let expense = await Expense.findAll({
-//     where: {
-//       user_id: req.session.user_id
-//     },
-//     attributes: [
-//       'cost'
-//     ],
-//     raw: true
-//   })
-//   return expense
-// }
-// const findRemaining = async function(){
-//   return findIncome() - findExpenses()
-// }
 
 // New expense page route
 router.get('/new', (req, res) => {

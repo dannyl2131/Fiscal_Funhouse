@@ -9,8 +9,19 @@
   </div>
 </div>
 <button id="logout" class="btn-no-style">Logout</button>
+<aside>
+  <h2>Your Budget</h2>
+</aside>
+<div class="row">
+  <div class="col-6">
 {{/each}}
 {{#each expenses.expenses as |expense| }}
-<h4>{{expense.name}}: ${{expense.cost}}</h4>
+<h4 class="expense">{{expense.name}}: ${{expense.cost}}</h4>
 {{/each}}
+  </div>
+  <div class="col-6">
+  {{>chart}}
+  </div>
+</div>
+
 

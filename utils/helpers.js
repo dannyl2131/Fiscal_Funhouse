@@ -1,3 +1,5 @@
+const handlebars = require('handlebars')
+
 module.exports = {
   get_emoji: () => {
     const randomNum = Math.random();
@@ -34,3 +36,25 @@ function getUserInfo() {
   const storedUser = JSON.parse(localStorage.getItem('userInfo'));
   return storedUser;
 }
+
+handlebars.registerHelper('chart', function (data) {
+  const chartData = JSON.stringify(data);
+
+  // Generate the chart HTML
+  return new handlebars.SafeString(`
+    <canvas id="expenseChart" width="400" height="400"></canvas>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var ctx = document.getElementById('expenseChart').getContext('2d');
+        var chartData = ${chartData};
+        
+        new Chart(ctx, {
+          type: 'pie',
+          data: chartData,
+          options: {}
+        });
+      });
+    Chart.defaults.color = "#fff";
+    </script>
+  `);
+});

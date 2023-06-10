@@ -8,14 +8,14 @@
   <title>Fiscal Funhouse</title>
   <link rel="stylesheet" href="./css/jass.css">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <header>
     <h1>Welcome to the Fiscal Funhouse</h1>
-  </header>
-  <nav>
     <a class="btn btn-danger" href="/">Home</a>
     <!-- If the user is logged in, show a logout button -->
     {{#if loggedIn}}
@@ -27,12 +27,13 @@
     {{#if loggedIn}}
     <button id="expenseBtn" class="btn btn-danger">New Expense</button>
     {{/if}}
+  </header>
+  <nav>
+    
   </nav>
-  <main>
-    <aside>
-      <h2>Your Budget</h2>
-    </aside>
-    <div class="budget m-5">
+  <main class="row">
+    
+    <div class="budget">
       {{{body}}}
     </div>
   </main>
@@ -40,7 +41,9 @@
   {{#if loggedIn}}
   <script src="./js/logout.js"></script>
   <script src="./js/homepage.js"></script>
+  
   {{/if}}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 
